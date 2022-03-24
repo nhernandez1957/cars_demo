@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <a class="btn btn-danger mt-2 float-end" href="/logout">Logout</a>
+        <h1>Welcome, <span class="text-info">{{user.first_name}}</span>!</h1>
+        
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Color</th>
+                    <th scope="col"># of Seats</th>
+                    <th scope="col">Driver</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                <tr>
+                    <th scope="row"><a href="/show/{{car.id}}">{{car.color}}</a></th>
+                    <td>{{car.seats}}</td>
+                    <td>{{car.user.first_name}}</td>
+                    <td><a class="btn btn-success ml-2" href="/edit/{{car.id}}">Edit</a>
+                        <a class="btn btn-danger" href="/delete/{{car.id}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+        <button class="btn btn-warning"><a href="/new/car">Add Car</a></button>
+    </div>
+</body>
+</html>
